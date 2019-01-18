@@ -1,0 +1,19 @@
+.back{
+    background-color: aliceblue;
+}
+.shiftleft{
+    margin-left: 100px;
+}
+.shiftright{
+    margin-right: 30px;
+    color: black;
+}
+a{
+    color: black;
+}
+a:hover{
+    color: hotpink;
+}
+.active{
+    color: hotpink;
+}
