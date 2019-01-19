@@ -3,4 +3,6 @@
 body{
     background-color: white;
     font-family: "Comic Sans MS", cursive, sans-serif;
+    max-width: 100%;
+    overflow-x: hidden;
 }

@@ -11,9 +11,9 @@
 a{
     color: black;
 }
-a:hover{
-    color: hotpink;
+a:hover, .dropdown-menu a:hover{
+    color: #ea399a;
 }
 .active{
-    color: hotpink;
+    color: #ea399a;
 }

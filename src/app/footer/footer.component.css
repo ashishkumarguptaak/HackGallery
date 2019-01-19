@@ -74,6 +74,10 @@
                 text-decoration: none;
  
 }
+
+.footer ul li a:hover {
+    color:#ea399a;
+}
  
 .footer a {
  
