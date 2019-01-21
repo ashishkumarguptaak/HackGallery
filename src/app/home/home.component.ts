@@ -13,6 +13,7 @@ import { Image } from './image/image';
 export class HomeComponent implements OnInit {
 
   i=0;
+  
   catogery = "";
   Slides: Slide[]=SLIDES;
   slide: Slide = this.Slides[this.i];

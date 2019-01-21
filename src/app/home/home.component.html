@@ -14,13 +14,13 @@
     
   </div>
 
-  <div class="container marginclass">
+  <!-- <div class="container marginclass">
       <div class="row">
           <ul style="list-style-type: none;">
               <li *ngFor="let images of Images" >
                   <a routerLink="/description">
                     <div class="col-md-4 image">
-                        <img src="{{images.image}}" style="width: 350px;height: 200px;">
+                        <img src="{{images.image}}" style="width:100%;height:auto;">
                         <div class="overlay">
                             <div class="text">
                               <p>{{images.name}}</p>
@@ -31,7 +31,28 @@
               </li>
           </ul>
           </div>
-  </div>
+  </div> -->
+  <div class="container marginclass">
+        <div class="row">
+            <ul style="list-style-type: none;">
+                <li *ngFor="let images of Images" >
+                    <a routerLink="/description">
+                      <div class="col-md-4 image">
+                          <img src="{{images.image}}" style="width:100%;height:auto;">
+                          <div class="overlay">
+                              <div class="text responsive">
+                                <p>{{images.name}}</p>
+                              </div>
+                              <div class="text responsive">
+                                <p>{{images.name}}</p>
+                              </div>
+                          </div>
+                      </div>
+                    </a>
+                </li>
+            </ul>
+            </div>
+    </div>
 
   <div class="center-blockcol-md-12 col-md-offset-5">
       <button class="btn btn-large showmore"><span class="glyphicon glyphicon-refresh"></span>SHOW MORE</button>

@@ -1,19 +1,19 @@
 <div class="container" style="background-color: white;">
   <div class="row">
     <div class="col-lg-9">
-      <label style="font-size: 24px;margin: 5px 0 20px 0;"> Contact</label><br>
+      <label style="font-size: 24px;margin: 5px 0 20px 0;"> Contact Us</label><br>
       <div>
-        <form>
+        <form #emailForm="ngForm" (ngSubmit)="sendemail(taskForm)" novalidate>
           <p class="responsive" style="color: #878787;">Are you looking for a professional photographer ? Please contact me.</p>
           <label class="label"><b>Your Name(required)</b></label><br>
-          <input type="text" required><br>
+          <input type="text" #name="ngModel" name="name" [(ngModel)]="emaildata.sender" required><br>
           <label class="label"><b>Your Email(required)</b></label><br>
-          <input type="text" required><br>
+          <input type="text" #email="ngModel" name="email" [(ngModel)]="emaildata.email" required><br>
           <label class="label"><b>Subject</b></label><br>
-          <input type="text" required><br>
+          <input type="text" #subject="ngModel" name="subject" [(ngModel)]="emaildata.subject" required><br>
           <label class="label"><b>Your Message</b></label><br>
-          <textarea rows="10" style="width: 100%;" required></textarea><br>
-          <button class="send">SEND</button>
+          <textarea rows="10" style="width: 100%;" #message="ngModel" name="message" [(ngModel)]="emaildata.message" required></textarea><br>
+          <button [disabled]="emailForm.form.invalid" type="submit" class="send">SEND</button>
         </form>
       </div>
     </div>
