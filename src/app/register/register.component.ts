@@ -33,12 +33,12 @@ export class RegisterComponent implements OnInit {
   }
 
   public registerUser(registerForm: NgForm){
-    console.log(this.userdata);
+    //console.log(this.userdata);
     this.registerservice.registeruser(this.userdata);
     this.userdata = {name:'', email:'', password:'',profileimage:'',date:new Date(),verified: false};
+    registerForm.reset();
     this.confirmpassword = '';
     this.imageUrl = '../../assets/icons/female.png';
-    console.log(this.userdata);
   }
 
 }

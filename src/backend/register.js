@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var nodemailer = require('nodemailer');
 
 
 //Connect to Mongoose
@@ -36,13 +37,63 @@ var User = module.exports = mongoose.model('hackgalleryusers', registerSchema);
 
 //Add Contact Emails
 module.exports.registerUser = function(userdata, res){
-    var email = userdata.email;
-    User.create(userdata,  (err, user) => {
-        if(err){
-            console.log("Some error occurred while adding user.");
-            res.send("Some error occurred while adding user.");
-            next();
+    var Email = userdata.email;
+
+    User.find({email:Email})
+    .then((doc)=>{
+        if(doc.length === 0){
+            User.create(userdata,  (err, user) => {
+                if(err){
+                    console.log("Something went wrong please try again.");
+                    res.send("Something went wrong please try again.");
+                }
+                console.log("User registered successfully.");
+                res.send(true);
+            });
+        }else if(doc[0].verified) {
+            console.log("Email is already registered.");
+            res.send("Email is already registered.");
+        }else {
+            console.log("User registered successfully.");
+            res.send(true)
         }
-        res.send("User registered successfully."+email);
-    });
+    })
+   .catch((err)=>{
+       console.log(err+"Something went wrong please try again.");
+       res.send("Something went wrong please try again.");
+   });
 }
+
+var transporter = nodemailer.createTransport(
+    {
+        service:'gmail',
+        secure:false,
+        port:25,
+        auth:{
+            user:'testgamilforme@gmail.com',
+            pass:'TESTtest@123'
+        },
+        tls:{
+            rejectUnauthorized:false
+        }
+    });
+
+    module.exports.sendOTP = function(otpdata, res){
+        var mailOptions={
+            from:'testgamilforme@gmail.com',
+            to: otpdata.email,
+            subject:'Verification OTP',
+            text:'Your HackGallery verification OTP is '+otpdata.otp
+        };
+    
+        transporter.sendMail(mailOptions,function(error,info){
+        if(error) {
+            console.log(error+"Email error");
+            res.send("Email error")
+        } else {
+            console.log('OTP sent successfully.'+info.response);
+            res.send("OTP sent successfully.");
+        }
+    
+    });
+    }

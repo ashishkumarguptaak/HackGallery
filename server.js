@@ -24,6 +24,10 @@ app.post('/registeruser', function(req, res, next){
     Register.registerUser(userdata, res);
 });
 
+app.post('/otp', function(req, res, next){
+    var otpdata = req.body;
+    Register.sendOTP(otpdata, res);
+});
 
 
 //Set port
