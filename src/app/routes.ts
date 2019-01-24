@@ -9,6 +9,7 @@ import { AboutComponent } from './about/about.component';
 import { DescriptionComponent } from './description/description.component';
 import { ProfileComponent } from './profile/profile.component';
 import { VerifyComponent } from './verify/verify.component';
+import { AppComponent } from './app.component';
 
 export const routes: Routes = [
     {path: 'home', component: HomeComponent },

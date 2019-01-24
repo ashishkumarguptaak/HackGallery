@@ -1,4 +1,19 @@
-<p>
-  verify works!
-</p>
+
+<div class="full">
+  <form #otpForm="ngForm" (ngSubmit)="verifyUser(otpForm)" novalidate>
+      <div class="imgcontainer">
+        <img src="../../assets/icons/email.gif" alt="Avatar" class="avatar"><br>
+        <label class="otp">We have send you an emil with OTP.</label>    
+      </div>
+    
+      <div class="container">
+        <label for="psw"><b>OTP</b></label><br>
+        <input type="password" placeholder="Enter your OTP" #otpvalue="ngModel" name="otp" [(ngModel)]="otp" required>
+        <div *ngIf="otpvalue.errors && (otpvalue.touched || incorrect)" class="alert alert-danger">
+          Incorrect OTP.
+        </div>
+        <button [disabled]="otpForm.form.invalid" type="submit">Verify</button><br>
+      </div>
+  </form>
+</div>
 <app-footer></app-footer>

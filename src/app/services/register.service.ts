@@ -17,15 +17,16 @@ export class RegisterService {
       if(result._body === "true" ){
         console.log("OTP Send");
         var OTP:string = Math.floor(100000 + Math.random() * 900000)+"";
-        console.log(OTP);
         var encrypted = CryptoJS.enc.Utf8.parse(OTP).toString();
-        console.log(encrypted);
-        localStorage.setItem("OTP",encrypted);
         this.router.navigate(['verify']);
         this.otpdata.email = userdata.email;
         this.otpdata.otp = OTP;
         this._http.post('http://localhost:1818/otp',this.otpdata).subscribe(result=>{
           console.log(result._body);
+          if(result._body === "OTP sent successfully."){
+            localStorage.setItem("OTP",encrypted);
+            localStorage.setItem("Email",userdata.email);
+          }
         });
       }else {
         console.log(result._body);

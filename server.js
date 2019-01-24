@@ -29,6 +29,21 @@ app.post('/otp', function(req, res, next){
     Register.sendOTP(otpdata, res);
 });
 
+app.post('/verify', function(req, res, next){
+    var emaildata = req.body;
+    Register.verifyOTP(emaildata, res);
+});
+
+app.post('/login', function(req, res, next){
+    var logindata = req.body;
+    Register.login(logindata, res);
+});
+
+app.post('/profile', function(req, res, next){
+    var profiledata = req.body;
+    Register.getprofile(profiledata, res);
+})
+
 
 //Set port
 const port = process.env.PORT || '1818';

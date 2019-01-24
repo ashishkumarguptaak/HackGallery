@@ -10,16 +10,28 @@
       <div class="container">
         <label><b>Name</b></label><br>
         <input type="text" placeholder="Enter your name" #name="ngModel" name="name" [(ngModel)]="userdata.name" required><br>
+        <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
+            Name required!
+        </div>
 
         <label><b>Email Id</b></label><br>
-        <input type="text" placeholder="Enter Email Id" #email="ngModel" name="email" [(ngModel)]="userdata.email" required><br>
-    
+        <input type="text" placeholder="Enter Email Id" #email="ngModel" name="email" [(ngModel)]="userdata.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required><br>
+        <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
+            Email is of the form example@example.com.
+        </div>
+
         <label for="psw"><b>Password</b></label><br>
-        <input type="password" placeholder="Enter Password" #password="ngModel" name="password" [(ngModel)]="userdata.password" required><br>
+        <input type="password" placeholder="Enter Password" #password="ngModel" name="password" [(ngModel)]="userdata.password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required><br>
+        <div *ngIf="password.errors && (password.dirty || password.touched)" class="alert alert-danger">
+            Password must contain atleast one lowercase, one uppercase and one digit and has atleast 6 characters.
+        </div>
 
         <label for="psw"><b>Confirm Password</b></label><br>
         <input type="password" placeholder="Confirm Password" #cnfpassword="ngModel" name="cnfpassword" [(ngModel)]="confirmpassword" required>
-            
+        <div *ngIf="cnfpassword.errors && (cnfpassword.dirty || cnfpassword.touched)" class="alert alert-danger">
+          Password mismatch.
+        </div>
+
         <button [disabled]="registerForm.form.invalid" type="submit">Register</button><br>
         <label>
           <a routerLink="/login">Login.</a>

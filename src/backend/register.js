@@ -19,6 +19,18 @@ var registerSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    city:{
+        type: String,
+        required: true
+    },
+    state:{
+        type: String,
+        required: true
+    },
+    education:{
+        type: String,
+        required: true
+    },
     profileimage:{
         type: String,
         required: true
@@ -96,4 +108,51 @@ var transporter = nodemailer.createTransport(
         }
     
     });
+    }
+
+    module.exports.verifyOTP = function (emaildata, res){
+        console.log(emaildata.email)
+        Email = emaildata.email;
+        User.findOneAndUpdate({email: Email}, {$set:{verified:true}}, {new: true}, (err, docs)=>{
+            if(err) {
+                res.send("Something went wrong.");
+            }else {
+                res.send("Verified successfully.");
+            }
+        });
+    }
+
+    module.exports.login = function(logindata, res) {
+        Email = logindata.email;
+        Password = logindata.password;
+        console.log(Email+" "+Password);
+        User.find({email:Email})
+        .then((doc)=>{
+            if(doc.length === 0){
+                res.send("This email is not registered.");
+            }else if(doc[0].verified){
+                if(doc[0].password !== Password){
+                    res.send("Invalid credentials.");
+                }else {
+                    res.send("true");
+                }
+            }else{
+                res.send("Your account is not verified yet please register again.");
+            }
+        })
+        .catch((err)=>{
+            res.send("Something went wrong please try again.");
+        });
+    }
+
+    module.exports.getprofile = function (profileemail, res){
+        console.log(profileemail.email)
+        Email = profileemail.email;
+        User.find({email:Email})
+        .then((doc)=>{
+            res.send(doc[0]);
+        })
+        .catch((err)=>{
+            res.send("Something went wrong.");
+        });
     }

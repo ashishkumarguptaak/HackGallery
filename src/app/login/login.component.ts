@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  login = {email: "", password: ""};
 
-  constructor() { }
+  constructor(@Inject(LoginService) public loginservice) { }
 
   ngOnInit() {
+  }
+
+  loginUser(loginForm: NgForm){
+    this.loginservice.userlogin(this.login);
+    this.login = {email: "", password: ""};
+    loginForm.resetForm();
   }
 
 }

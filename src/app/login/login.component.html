@@ -1,18 +1,24 @@
 
 <div class="full">
-    <form >
+    <form #loginForm="ngForm" (ngSubmit)="loginUser(loginForm)" novalidate>
         <div class="imgcontainer">
           <img src="../../assets/icons/female.png" alt="Avatar" class="avatar">
         </div>
       
         <div class="container">
           <label><b>Email Id</b></label><br>
-          <input type="text" placeholder="Enter Username" name="uname" required><br>
+          <input type="text" placeholder="Enter Username" #uname="ngModel" name="uname" [(ngModel)]="login.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required><br>
+          <div *ngIf="uname.errors && (uname.dirty || uname.touched)" class="alert alert-danger">
+            Email is of the form example@example.com.
+          </div>
       
           <label for="psw"><b>Password</b></label><br>
-          <input type="password" placeholder="Enter Password" name="psw" required>
+          <input type="password" placeholder="Enter Password" #password="ngModel" name="password" [(ngModel)]="login.password" required><br>
+          <div *ngIf="password.errors && (password.dirty || password.touched)" class="alert alert-danger">
+            Enter password.
+          </div>
               
-          <button type="submit">Login</button><br>
+          <button [disabled]="loginForm.form.invalid" type="submit">Login</button><br>
           <label>
             <a routerLink="/register">Create an account.</a>
           </label>

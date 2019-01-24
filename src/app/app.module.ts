@@ -3,9 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-//import { CookieService } from '';
-import { RegisterService } from './services/register.service';
-
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
@@ -18,6 +15,12 @@ import { AboutComponent } from './about/about.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DescriptionComponent } from './description/description.component';
 import { VerifyComponent } from './verify/verify.component';
+
+import { AuthService } from './services/auth.service';
+import { ContactService } from './services/contact.service';
+import { LoginService } from './services/login.service';
+import { RegisterService } from './services/register.service';
+import { VerifyService } from './services/verify.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,7 @@ import { VerifyComponent } from './verify/verify.component';
     FormsModule,
     HttpModule
   ],
-  providers: [RegisterService],
+  providers: [AuthService, ContactService, LoginService, RegisterService, VerifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

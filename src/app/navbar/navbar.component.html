@@ -21,7 +21,16 @@
         </li>
         <li><a routerLink="/contact" routerLinkActive="active"><span class="glyphicon glyphicon-envelope"></span> CONTACT</a></li>
         <li><a routerLink="/about" routerLinkActive="active"><span class="glyphicon glyphicon-exclamation-sign"></span> ABOUT</a></li>
-        <li><a routerLink="/login" routerLinkActive="active"><span class="glyphicon glyphicon-log-in"></span> LOGIN</a></li>
+        <li><a routerLink="/login" *ngIf="!authservice.authenticated()" routerLinkActive="active"><span class="glyphicon glyphicon-log-in"></span> LOGIN</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle mwidth" data-toggle="dropdown" *ngIf="authservice.authenticated()">
+            <span><img src="../../assets/icons/female.png" alt="Avatar" class="avatar"></span> {{loginservice.localstorage("email")}}</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">View Profile</a></li>
+            <li><a href="#">View Uploads</a></li>
+            <li><a href="#" (click)="userlogout()">Logout</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>

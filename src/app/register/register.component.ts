@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { RegisterService } from '../services/register.service';
 
@@ -10,9 +10,9 @@ import { RegisterService } from '../services/register.service';
 export class RegisterComponent implements OnInit {
   confirmpassword: string;
   imageUrl:string="../../assets/icons/female.png";
-  userdata = {name:'', email:'', password:'',profileimage:'',date:new Date(),verified: false};
+  userdata = {name:'', email:'', password:'',city:'Enter city',state:'Enter state',education:'Enter education status',profileimage:'',date:new Date(),verified: false};
   
-  constructor(@Inject(RegisterService) public registerservice) { }
+  constructor(public registerservice: RegisterService) { }
 
   ngOnInit() {
   }
@@ -35,8 +35,8 @@ export class RegisterComponent implements OnInit {
   public registerUser(registerForm: NgForm){
     //console.log(this.userdata);
     this.registerservice.registeruser(this.userdata);
-    this.userdata = {name:'', email:'', password:'',profileimage:'',date:new Date(),verified: false};
-    registerForm.reset();
+    this.userdata = {name:'', email:'', password:'',city:'Enter city',state:'Enter state',education:'Enter education status',profileimage:'',date:new Date(),verified: false};
+    registerForm.resetForm();
     this.confirmpassword = '';
     this.imageUrl = '../../assets/icons/female.png';
   }
