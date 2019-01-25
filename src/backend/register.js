@@ -3,7 +3,7 @@ var nodemailer = require('nodemailer');
 
 
 //Connect to Mongoose
-const conn = mongoose.connect('mongodb://hackgalleryuser:hackgallery1password@ds161804.mlab.com:61804/hackgallery');
+const conn = mongoose.connect('mongodb://bookgalleryuser:bookgallery1@ds213255.mlab.com:13255/bookgallery');
 
 //Register Schema
 var registerSchema = mongoose.Schema({
@@ -45,7 +45,7 @@ var registerSchema = mongoose.Schema({
     }
 });
 
-var User = module.exports = mongoose.model('hackgalleryusers', registerSchema);
+var User = module.exports = mongoose.model('bookgalleryusers', registerSchema);
 
 //Add Contact Emails
 module.exports.registerUser = function(userdata, res){

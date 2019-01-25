@@ -5,7 +5,7 @@ export const IMAGES: Image[] = [
         id: '0',
         name: 'YOUNG BEAUTIFUL GIRL',
         //image: 'https://isonomous-ground.000webhostapp.com/HackGallery/ownerimage2.jpg'
-        image: '../../../assets/ownerimage1.jpg'
+        image: '../../../assets/test.pdf'
     },
     {
         id: '1',

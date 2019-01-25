@@ -3,9 +3,9 @@ import { Slide } from './slide';
 export const SLIDES: Slide[] = [
     {
         id: '0',
-        name: 'Collection of books.',
-        image: '../../../assets/slides/slideshow1.jpg',
-        category: 'Coastal Town'
+        name: 'Presenting you a E-collection.',
+        image: '../../../assets/slides/slideshow4.jpg',
+        category: 'Sea'
     },
     {
         id: '1',
@@ -21,9 +21,9 @@ export const SLIDES: Slide[] = [
     },
     {
         id: '3',
-        name: 'Presenting you a E-collection.',
-        image: '../../../assets/slides/slideshow4.jpg',
-        category: 'Sea'
+        name: 'Collection of books.',
+        image: '../../../assets/slides/slideshow1.jpg',
+        category: 'Coastal Town'
     },
     {
         id: '4',
