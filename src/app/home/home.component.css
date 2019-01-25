@@ -71,9 +71,9 @@ input {
   margin-top: 40px;
 }
 
-
-.image {
-  position: relative;
+.name {
+  font-size: 16px;
+  color: darkgreen;
 }
 
 .overlay {
@@ -83,7 +83,7 @@ input {
   right: 0;
   background-color: #a89e9e00;
   overflow: hidden;
-  width: 100%;
+  width: 80%;
   height: 0;
   transition: .5s ease;
 }

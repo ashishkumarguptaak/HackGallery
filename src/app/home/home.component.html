@@ -38,16 +38,9 @@
             <ul style="list-style-type: none;">
                 <li *ngFor="let images of Images" >
                     <a routerLink="/description">
-                      <div class="col-md-4 image">
-                          <img src="{{images.image}}" style="width:100%;height:auto;">
-                          <div class="overlay">
-                              <div class="text responsive">
-                                <p>{{images.name}}</p>
-                              </div>
-                              <div class="text responsive">
-                                <p>{{images.name}}</p>
-                              </div>
-                          </div>
+                      <div class="col-md-4">
+                          <img src="{{images.image}}" style="width:80%;height:200px;">
+                          <p class="name">{{images.name}}</p>
                       </div>
                     </a>
                 </li>
