@@ -4,6 +4,9 @@ import { Slide } from './slide/slide';
 import { SLIDES } from './slide/slides'
 import { IMAGES } from './image/images';
 import { Image } from './image/image';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { AuthService } from '../services/auth.service';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-home',
@@ -19,9 +22,11 @@ export class HomeComponent implements OnInit {
   slide: Slide = this.Slides[this.i];
 
   Images: Image[]=IMAGES;
-  constructor() { }
+  constructor(public authservice: AuthService,public loginservice: LoginService) { }
 
   ngOnInit() {
+    var navbar = new NavbarComponent(this.authservice,this.loginservice);
+    navbar.ngOnInit();
   }
 
   public plusSlides(value: number){

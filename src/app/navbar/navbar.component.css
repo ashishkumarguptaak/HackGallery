@@ -10,6 +10,7 @@
 }
 a{
     color: black;
+    cursor: pointer;
 }
 a:hover, .dropdown-menu a:hover{
     color: #ea399a;
@@ -24,8 +25,4 @@ a:hover, .dropdown-menu a:hover{
     border-radius: 50%;
     cursor: pointer;
     margin: auto;
-  }
-
-  .mwidth {
-    
   }

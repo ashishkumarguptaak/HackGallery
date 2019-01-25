@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { LoginService } from '../services/login.service';
 
@@ -10,7 +10,7 @@ import { LoginService } from '../services/login.service';
 export class LoginComponent implements OnInit {
   login = {email: "", password: ""};
 
-  constructor(@Inject(LoginService) public loginservice) { }
+  constructor(public loginservice: LoginService) { }
 
   ngOnInit() {
   }

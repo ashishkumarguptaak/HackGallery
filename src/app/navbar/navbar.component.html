@@ -14,7 +14,6 @@
             <li><a href="#">Fashion</a></li>
             <li><a href="#">Nature</a></li>
             <li><a href="#">Science</a></li>
-            <li><a href="#"></a></li>
             <li><a href="#">Sports</a></li>
             <li><a href="#">Travel</a></li>
           </ul>
@@ -24,10 +23,10 @@
         <li><a routerLink="/login" *ngIf="!authservice.authenticated()" routerLinkActive="active"><span class="glyphicon glyphicon-log-in"></span> LOGIN</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle mwidth" data-toggle="dropdown" *ngIf="authservice.authenticated()">
-            <span><img src="../../assets/icons/female.png" alt="Avatar" class="avatar"></span> {{loginservice.localstorage("email")}}</a>
+            <span><img src={{profileimage}} alt="Avatar" class="avatar"></span> {{email}}</a>
           <ul class="dropdown-menu">
-            <li><a href="#">View Profile</a></li>
-            <li><a href="#">View Uploads</a></li>
+            <li><a routerLink="/profile">View Profile</a></li>
+            <li><a routerLink="/uploads">View Uploads</a></li>
             <li><a href="#" (click)="userlogout()">Logout</a></li>
           </ul>
         </li>

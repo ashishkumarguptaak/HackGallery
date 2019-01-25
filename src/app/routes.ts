@@ -9,7 +9,8 @@ import { AboutComponent } from './about/about.component';
 import { DescriptionComponent } from './description/description.component';
 import { ProfileComponent } from './profile/profile.component';
 import { VerifyComponent } from './verify/verify.component';
-import { AppComponent } from './app.component';
+import { UploadsComponent } from './uploads/uploads.component';
+import { UploadimageComponent } from './uploadimage/uploadimage.component';
 
 export const routes: Routes = [
     {path: 'home', component: HomeComponent },
@@ -20,6 +21,9 @@ export const routes: Routes = [
     {path: 'description', component: DescriptionComponent },
     {path: 'profile', component: ProfileComponent },
     {path: 'verify', component: VerifyComponent },
+    {path: 'profile', component: ProfileComponent},
+    {path: 'uploads', component: UploadsComponent },
+    {path: 'uploadimage', component: UploadimageComponent },
     {path: '', component: HomeComponent }
 ];
 

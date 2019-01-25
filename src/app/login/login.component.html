@@ -7,8 +7,8 @@
       
         <div class="container">
           <label><b>Email Id</b></label><br>
-          <input type="text" placeholder="Enter Username" #uname="ngModel" name="uname" [(ngModel)]="login.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required><br>
-          <div *ngIf="uname.errors && (uname.dirty || uname.touched)" class="alert alert-danger">
+          <input type="text" placeholder="Enter Username" #Email="ngModel" name="Email" [(ngModel)]="login.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required><br>
+          <div *ngIf="Email.errors && (Email.dirty || Email.touched)" class="alert alert-danger">
             Email is of the form example@example.com.
           </div>
       

@@ -21,6 +21,11 @@ import { ContactService } from './services/contact.service';
 import { LoginService } from './services/login.service';
 import { RegisterService } from './services/register.service';
 import { VerifyService } from './services/verify.service';
+import { UploadsComponent } from './uploads/uploads.component';
+import { UploadimageComponent } from './uploadimage/uploadimage.component';
+import { UploadService } from './services/upload.service';
+
+import { ImageCompressService,ResizeOptions } from 'ng2-image-compress';
 
 @NgModule({
   declarations: [
@@ -34,7 +39,9 @@ import { VerifyService } from './services/verify.service';
     AboutComponent,
     ProfileComponent,
     DescriptionComponent,
-    VerifyComponent
+    VerifyComponent,
+    UploadsComponent,
+    UploadimageComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +49,7 @@ import { VerifyService } from './services/verify.service';
     FormsModule,
     HttpModule
   ],
-  providers: [AuthService, ContactService, LoginService, RegisterService, VerifyService],
+  providers: [AuthService, ContactService, LoginService, RegisterService, UploadService, VerifyService, ImageCompressService,ResizeOptions],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

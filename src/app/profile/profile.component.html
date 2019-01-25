@@ -1,4 +1,61 @@
 
-<p>
-  profile works!
-</p>
+<div class="container" style="background-color: white;">
+  <div class="row">
+    <div class="col-lg-9">
+      <form #profileForm="ngForm" (ngSubmit)="updateprofile()" novalidate>
+          <label style="font-size: 24px;margin: 5px 0 30px 0;">User Profile</label><br>
+          <div class="imgcontainer">
+            <img src="{{profiledata.profileimage}}" alt="Avatar" class="profile"><br>
+            <button class="edit" type="button" (click)="edit()"> <span class="glyphicon glyphicon-pencil"></span> Edit</button>
+          </div>
+          <label><b>Name</b></label><br>
+          <input disabled="{{disabled}}" type="text" placeholder="Enter name" #Name="ngModel" name="Name" [(ngModel)]="profiledata.name" required><br>
+          <div *ngIf="Name.errors && (Name.dirty || Name.touched)" class="alert alert-danger">
+            Required field.
+          </div>
+
+        <label><b>Email Id</b></label><br>
+        <input disabled="{{disabled}}" type="text" placeholder="Enter Username" #Email="ngModel" name="Email" [(ngModel)]="profiledata.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required><br>
+        <div *ngIf="Email.errors && (Email.dirty || Email.touched)" class="alert alert-danger">
+          Email is of the form example@example.com.
+        </div>
+    
+        <label for="psw"><b>Password</b></label><br>
+        <input disabled="{{disabled}}" type="text" placeholder="Enter Password" #password="ngModel" name="password" [(ngModel)]="profiledata.password" required><br>
+        <div *ngIf="password.errors && (password.dirty || password.touched)" class="alert alert-danger">
+          Enter password.
+        </div>
+
+        <label><b>City</b></label><br>
+          <input disabled="{{disabled}}" type="text" placeholder="Enter city" #City="ngModel" name="City" [(ngModel)]="profiledata.city"><br>
+
+          <label><b>State</b></label><br>
+          <input disabled="{{disabled}}" type="text" placeholder="Enter state" #State="ngModel" name="State" [(ngModel)]="profiledata.state"><br>
+
+          <label><b>Education</b></label><br>
+          <input disabled="{{disabled}}" type="text" placeholder="Enter state" #Education="ngModel" name="Education" [(ngModel)]="profiledata.education"><br>
+
+          <button [disabled]="profileForm.form.invalid" type="submit">Update</button><br>
+      </form>        
+
+    </div>
+    <div class="col-lg-3">
+      <label style="font-size: 24px;margin: 5px 0 30px 0;">Photographer</label><br>
+      <div class="imgcontainer">
+        <img src="../../assets/icons/photographer.jpg" alt="Avatar" class="avatar">
+      </div>
+      <label class="photoinfo">I enjoyed photography as a hobby for a year. Very happy that people who don't have premium stock subscriptions can enjoy/and find use for my shots.</label>
+      <div>
+        <h3> Recent Posts </h3>
+        <ul>
+            <li> <a href="#"> Young Beautiful Girl </a> </li>
+            <li> <a href="#"> Blue Beauty </a> </li>
+            <li> <a href="#"> Flowers Nature </a> </li>
+            <li> <a href="#"> Just Beautiful </a> </li>
+            <li> <a href="#"> Portrait Photo </a></li>
+        </ul>
+    </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

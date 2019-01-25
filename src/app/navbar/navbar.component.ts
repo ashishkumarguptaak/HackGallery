@@ -8,15 +8,15 @@ import { LoginService } from '../services/login.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  email = "";
+  email = "User";
+  profileimage = "../../assets/icons/female.png";
 
   constructor(public authservice: AuthService,public loginservice: LoginService) { }
 
   ngOnInit() {
     if(this.authservice.authenticated()){
       this.email = localStorage.getItem("Email");
-      console.log((JSON.stringify(this.loginservice.profile)));
-     // console.log(this.loginservice.profile);
+      this.profileimage = localStorage.getItem("ProfileImage");
     }
   }
 

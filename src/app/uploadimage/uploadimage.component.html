@@ -1,0 +1,23 @@
+
+<div class="full">
+    <form #uploadForm="ngForm" (ngSubmit)="uploadImage()" novalidate>
+        <div class="imgcontainer">
+          <img src="{{imageurl}}" alt="Avatar" class="avatar"> 
+          <input #Image style="margin-left: 40%" type="file"  (change)="onFileChanged($event)" accept="image/*">
+        </div>
+      
+        <div class="container">
+          <label><b>Image</b></label><br>
+          <input type="text" placeholder="Image name" #Name="ngModel" name="Name" [(ngModel)]="imagedata.name" required><br>
+          <div *ngIf="Name.errors && (Name.dirty || Name.touched)" class="alert alert-danger">
+              Name required!
+          </div>
+  
+          <label><b>Description</b></label><br>
+          <input type="text" placeholder="Enter description" #Description="ngModel" name="Description" [(ngModel)]="imagedata.description"><br>
+  
+          <button [disabled]="uploadForm.form.invalid" type="submit">Upload</button><br>
+        </div>
+    </form>
+  </div>
+  <app-footer></app-footer>

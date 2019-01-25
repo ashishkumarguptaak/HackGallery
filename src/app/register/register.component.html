@@ -3,7 +3,7 @@
   <form #registerForm="ngForm" (ngSubmit)="registerUser(registerForm)" novalidate>
       <div class="imgcontainer">
         <img src="{{imageUrl}}" alt="Avatar" class="avatar"> 
-        <input #Image style="margin-left: 40%" type="file"  (change)="onFileChanged($event)" accept="image/*">
+        <input #Image style="margin-left: 40%" type="file" name="image"  (change)="onFileChanged($event)" accept="image/*">
       
       </div>
     

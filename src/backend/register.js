@@ -21,15 +21,15 @@ var registerSchema = mongoose.Schema({
     },
     city:{
         type: String,
-        required: true
+        required: false
     },
     state:{
         type: String,
-        required: true
+        required: false
     },
     education:{
         type: String,
-        required: true
+        required: false
     },
     profileimage:{
         type: String,
@@ -37,7 +37,7 @@ var registerSchema = mongoose.Schema({
     },
     date:{
         type: Date,
-        default: Date.now
+        default: Date()
     },
     verified:{
         type: Boolean,
@@ -50,17 +50,19 @@ var User = module.exports = mongoose.model('hackgalleryusers', registerSchema);
 //Add Contact Emails
 module.exports.registerUser = function(userdata, res){
     var Email = userdata.email;
+    console.log(Email);
 
     User.find({email:Email})
     .then((doc)=>{
         if(doc.length === 0){
             User.create(userdata,  (err, user) => {
                 if(err){
-                    console.log("Something went wrong please try again.");
-                    res.send("Something went wrong please try again.");
+                    console.log("Something went wrong please try again."+err);
+                    res.send("Creation error Something went wrong please try again.");
+                }else{
+                    console.log("User registered successfully.");
+                    res.send(true);
                 }
-                console.log("User registered successfully.");
-                res.send(true);
             });
         }else if(doc[0].verified) {
             console.log("Email is already registered.");
@@ -72,7 +74,7 @@ module.exports.registerUser = function(userdata, res){
     })
    .catch((err)=>{
        console.log(err+"Something went wrong please try again.");
-       res.send("Something went wrong please try again.");
+       res.send("Error Something went wrong please try again.");
    });
 }
 
@@ -129,30 +131,34 @@ var transporter = nodemailer.createTransport(
         User.find({email:Email})
         .then((doc)=>{
             if(doc.length === 0){
-                res.send("This email is not registered.");
+                login = {status: "false", data: "This email is not registered."}
+                res.send(login);
             }else if(doc[0].verified){
                 if(doc[0].password !== Password){
-                    res.send("Invalid credentials.");
+                    login = {status: "false", data: "Invalid credentials."}
+                    res.send(login);
                 }else {
-                    res.send("true");
+                    login = {status: "true", data: doc[0]}
+                    res.send(login);
                 }
             }else{
-                res.send("Your account is not verified yet please register again.");
+                login = {status: "false", data: "Your account is not verified yet please register again."}
+                res.send(login);
             }
         })
         .catch((err)=>{
-            res.send("Something went wrong please try again.");
+            login = {status: "false", data: "Something went wrong please try again."}
+            res.send(login);
         });
     }
 
-    module.exports.getprofile = function (profileemail, res){
-        console.log(profileemail.email)
-        Email = profileemail.email;
-        User.find({email:Email})
-        .then((doc)=>{
-            res.send(doc[0]);
-        })
-        .catch((err)=>{
-            res.send("Something went wrong.");
+    module.exports.updateprofile = function(profiledata, res){
+        Email = profiledata.email;
+        User.findOneAndUpdate({email: Email}, {$set:profiledata}, {new: true}, (err, docs)=>{
+            if(err) {
+                res.send("Something went wrong.");
+            }else {
+                res.send("Updated successfully.");
+            }
         });
     }

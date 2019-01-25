@@ -1,0 +1,43 @@
+
+<div class="container" style="background-color: white;">
+    <div class="row">
+      <div class="col-lg-9">
+          <label style="font-size: 24px;margin: 5px 0 30px 0;">Your Uploads</label><br>
+          <div class="imgcontainer" *ngIf="imageservice.getImageItems().length === 0">
+              <img src="../../assets/icons/emptystate.gif" alt="Avatar" class="avatar"> 
+            </div>
+            <div *ngIf="imageservice.getImageItems().length !== 0">
+              <div class="row">
+                <ul style="list-style-type: none;">
+                    <li *ngFor="let images of Images" >
+                        <a routerLink="/description">
+                          <div class="col-md-4 image">
+                              <img src="{{images.image}}" style="width:100%;height:auto;">
+                          </div>
+                        </a>
+                    </li>
+                </ul>
+                </div>
+            </div>
+          <button routerLink="/uploadimage">Upload</button><br>
+      </div>
+      <div class="col-lg-3">
+        <label style="font-size: 24px;margin: 5px 0 30px 0;">Photographer</label><br>
+        <div class="imgcontainer">
+          <img src="../../assets/icons/photographer.jpg" alt="Avatar" class="avatar">
+        </div>
+        <label class="photoinfo">I enjoyed photography as a hobby for a year. Very happy that people who don't have premium stock subscriptions can enjoy/and find use for my shots.</label>
+        <div>
+          <h3> Recent Posts </h3>
+          <ul>
+              <li> <a href="#"> Young Beautiful Girl </a> </li>
+              <li> <a href="#"> Blue Beauty </a> </li>
+              <li> <a href="#"> Flowers Nature </a> </li>
+              <li> <a href="#"> Just Beautiful </a> </li>
+              <li> <a href="#"> Portrait Photo </a></li>
+          </ul>
+      </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>

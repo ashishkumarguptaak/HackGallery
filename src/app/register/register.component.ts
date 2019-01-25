@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ImageCompressService, IImage } from  'ng2-image-compress';
 import { RegisterService } from '../services/register.service';
 
 @Component({
@@ -8,9 +9,12 @@ import { RegisterService } from '../services/register.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  selectedImage: any;
+  processedImages: any = [];
+
   confirmpassword: string;
   imageUrl:string="../../assets/icons/female.png";
-  userdata = {name:'', email:'', password:'',city:'Enter city',state:'Enter state',education:'Enter education status',profileimage:'',date:new Date(),verified: false};
+  userdata = {name:'', email:'', password:'',city:'',state:'',education:'',profileimage:'',date:new Date(),verified: false};
   
   constructor(public registerservice: RegisterService) { }
 
@@ -18,22 +22,23 @@ export class RegisterComponent implements OnInit {
   }
 
   onFileChanged(event) {
-    const file = event.target.files[0]
+    let images: Array<IImage> = [];
     
-    var reader = new FileReader();
-    
-    reader.onload = (event:any) => {
-      this.imageUrl = event.target.result;
-
-      //console.log( this.imageUrl);
-      this.userdata.profileimage = this.imageUrl;
-    }
-    reader.readAsDataURL(file);
+    ImageCompressService.filesToCompressedImageSource(event.target.files).then(observableImages => {
+      observableImages.subscribe((image) => {
+        images.push(image);
+      }, (error) => {
+        console.log("Error while converting");
+      }, () => {
+                this.processedImages = images;
+                this.imageUrl = this.processedImages[0].compressedImage.imageDataUrl;
+                this.userdata.profileimage = this.imageUrl;
+      });
+    });
    
   }
 
   public registerUser(registerForm: NgForm){
-    //console.log(this.userdata);
     this.registerservice.registeruser(this.userdata);
     this.userdata = {name:'', email:'', password:'',city:'Enter city',state:'Enter state',education:'Enter education status',profileimage:'',date:new Date(),verified: false};
     registerForm.resetForm();
