@@ -21,6 +21,8 @@ export class UploadimageComponent implements OnInit {
   }
 
   onFileChanged(event) {
+    
+
     let images: Array<IImage> = [];
     
     ImageCompressService.filesToCompressedImageSource(event.target.files).then(observableImages => {

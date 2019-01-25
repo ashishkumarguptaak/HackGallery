@@ -5,7 +5,7 @@
       <label style="font-size: 24px;margin: 5px 0 20px 0;"> Contact Us</label><br>
       <div>
         <form #emailForm="ngForm" (ngSubmit)="sendemail(taskForm)" novalidate>
-          <p class="responsive" style="color: #878787;">Are you looking for a professional photographer ? Please contact me.</p>
+          <p class="responsive" style="color: #878787;">Are you looking for any book store ? Please contact me.</p>
           <label class="label"><b>Your Name(required)</b></label><br>
           <input type="text" #name="ngModel" name="name" [(ngModel)]="emaildata.sender" required><br>
           <label class="label"><b>Your Email(required)</b></label><br>
@@ -19,11 +19,11 @@
       </div>
     </div>
     <div class="col-lg-3">
-      <label style="font-size: 24px;margin: 5px 0 30px 0;">Photographer</label><br>
+      <label style="font-size: 24px;margin: 5px 0 30px 0;">Reader</label><br>
       <div class="imgcontainer">
         <img src="../../assets/icons/photographer.jpg" alt="Avatar" class="avatar">
       </div>
-      <label class="photoinfo">I enjoyed photography as a hobby for a year. Very happy that people who don't have premium stock subscriptions can enjoy/and find use for my shots.</label>
+      <label class="photoinfo">I enjoyed reading as a hobby for a year. Very happy that people who don't have premium stock subscriptions can enjoy/and find use for my BookGallery.</label>
       <div>
         <h3> Recent Posts </h3>
         <ul>
