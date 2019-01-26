@@ -37,7 +37,6 @@ export class UploadimageComponent implements OnInit {
   uploadPDF(uploadForm: NgForm){
     console.log("Uploading PDF.")
     this.uploader.uploadAll();
-    uploadForm.resetForm();
 
   }
 

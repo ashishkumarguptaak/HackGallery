@@ -29,12 +29,14 @@ var FileUpload = module.exports = mongoose.model('FileUploads', uploadSchema);
 module.exports.fileupload = function(filedata, res){
     FileUpload.create(filedata,(err,user)=>
     {
+        console.log(filedata);
         if(err){
             console.log("Something went wrong please try again.");
-            res.send("Something went wrong please try again.");
+            res.send("false");
+        }else {
+            console.log("File Uploaded successfully.");
+            res.send("true");
         }
-        console.log("File Uploaded successfully.");
-        res.send(true);
     });
 }
 

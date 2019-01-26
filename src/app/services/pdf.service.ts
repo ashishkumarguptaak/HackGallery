@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { PDFItem } from './PDF/pdf';
 import { PDF_ITEMS } from './PDF/pdfs';
 
 @Injectable({
@@ -10,16 +9,17 @@ export class PDFService {
   constructor (){}
 
     getPdfItems() {
+      console.log(PDF_ITEMS);
         return PDF_ITEMS;
     }
 
-    addPdfItem(pdfItem: PDFItem) {
-      PDF_ITEMS.push(pdfItem);
-  }
 
-  addPdfItems(pdfItems: PDFItem[]){
+  addPdfItems(pdfItems){
     PDF_ITEMS.splice(0);
-    for(let pdfItem of pdfItems)
-    PDF_ITEMS.push(pdfItem);
+    console.log("Adding PDFItems");
+    for(let pdfItem of pdfItems){
+      console.log("For: "+pdfItem.name)
+      PDF_ITEMS.push(pdfItem);
+    }
   }
 }

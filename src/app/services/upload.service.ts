@@ -16,13 +16,8 @@ export class UploadService {
         console.log("No pdfs.");
       }else {
         console.log("Fetched PDFs.");
-        console.log(result._body);
-        this.pdfservice.addPdfItems(result._body);
-        var l = (this.pdfservice.getPdfItems()).length;
-        console.log(JSON.parse(this.pdfservice.getPdfItems()));
-        // for(let i=0;i<l;i++){
-        //   console.log(this.pdfservice.getPdfItems()[i]);
-        // }
+        var data = JSON.parse((result._body));
+        this.pdfservice.addPdfItems(data);
       }
     });
   }

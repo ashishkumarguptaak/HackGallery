@@ -3,16 +3,17 @@
     <div class="row">
       <div class="col-lg-9">
           <label style="font-size: 24px;margin: 5px 0 30px 0;">Your Uploads</label><br>
-          <div class="imgcontainer" >
+            <div class="imgcontainer" *ngIf="pdfservice.getPdfItems().length===0">
               <img src="../../assets/icons/emptystate.gif" alt="Avatar" class="avatar"> 
             </div>
-            <div >
+            <div  *ngIf="pdfservice.getPdfItems().length!==0">
               <div class="row">
                 <ul style="list-style-type: none;">
-                    <li *ngFor="let images of Images" >
+                    <li *ngFor="let pdf of pdfservice.getPdfItems()" >
                         <a routerLink="/description">
                           <div class="col-md-4 image">
-                              <img src="{{images.image}}" style="width:100%;height:auto;">
+                             <img src="{{../../../../assets/icons/pdf.gif" style="width:80%;height:200px;">
+                              <div class="name">{{pdf.name}}</div>
                           </div>
                         </a>
                     </li>
