@@ -24,9 +24,11 @@ import { VerifyService } from './services/verify.service';
 import { UploadsComponent } from './uploads/uploads.component';
 import { UploadimageComponent } from './uploadimage/uploadimage.component';
 import { UploadService } from './services/upload.service';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 import { ImageCompressService,ResizeOptions } from 'ng2-image-compress';
 import { FileSelectDirective } from 'ng2-file-upload';
+import { PDFService } from './services/pdf.service';
 
 @NgModule({
   declarations: [
@@ -46,12 +48,13 @@ import { FileSelectDirective } from 'ng2-file-upload';
     UploadimageComponent
   ],
   imports: [
+    PdfViewerModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpModule
   ],
-  providers: [AuthService, ContactService, LoginService, RegisterService, UploadService, VerifyService, ImageCompressService,ResizeOptions],
+  providers: [AuthService, ContactService, PDFService, LoginService, RegisterService, UploadService, VerifyService, ImageCompressService,ResizeOptions],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

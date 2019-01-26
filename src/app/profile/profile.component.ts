@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UpdateprofileService } from '../services/updateprofile.service';
+import { PDFService } from '../services/pdf.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,7 +13,7 @@ export class ProfileComponent implements OnInit {
   profiledata = {name:"", email:"", password:"",city:"",state:"",education:"",profileimage:"../../assets/icons/photographer.jpg",date:new Date(),verified: true};
 
 
-  constructor(public profileservice: UpdateprofileService) { }
+  constructor(public profileservice: UpdateprofileService,private pdfService:PDFService) { }
 
   ngOnInit() {
     this.profiledata.name = localStorage.getItem("Name");
@@ -22,6 +23,7 @@ export class ProfileComponent implements OnInit {
     this.profiledata.state = localStorage.getItem("State");
     this.profiledata.education = localStorage.getItem("Education");
     this.profiledata.profileimage = localStorage.getItem("ProfileImage");
+    console.log(this.pdfService.getPdfItems());
   }
 
   edit(){ 

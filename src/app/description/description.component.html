@@ -3,7 +3,19 @@
   <div class="row">
     <div class="col-lg-9">
       <div>
-          <img src="../../assets/icons/mobile.jpg" alt="Mobile" style="width: 100%;height: 100%;">
+          <!-- <img src="../../assets/icons/mobile.jpg" alt="Mobile" style="width: 100%;height: 100%;"> -->
+          <pdf-viewer class="pdfcontainer" [src]="pdfSrc" 
+              [render-text]="true"
+              style="display: block;" [page]="1"  [show-all]="false"></pdf-viewer>
+              <div class="row">
+                <div class="col-lg-8">
+                    <label for="psw"><b>Book Name : </b></label><br>
+                  <span>{{name}}</span>
+                </div>
+                <div class="col-lg-4"><a target="_blank" href="{{pdfSrc}}" class="btn btn-danger">Download</a><a routerLink="/uploads" class="btn btn-info">Back</a></div>
+              </div>
+              <label for="psw"><b>Description : </b></label><br>
+              <span>{{description}}</span>
       </div>
     </div>
     <div class="col-lg-3">
@@ -22,17 +34,6 @@
             <li> <a href="#"> Portrait Photo </a></li>
         </ul>
     </div>
-    <div>
-      <h3> Categories </h3>
-      <ul>
-        <li><a routerLink="/home">Fashion</a></li>
-        <li><a routerLink="/home">Nature</a></li>
-        <li><a routerLink="/home">Science</a></li>
-        <li><a routerLink="/home"></a></li>
-        <li><a routerLink="/home">Sports</a></li>
-        <li><a routerLink="/home">Travel</a></li>
-      </ul>
-  </div>
     </div>
   </div>
 </div>

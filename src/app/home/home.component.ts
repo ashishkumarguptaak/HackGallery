@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { Slide } from './slide/slide';
 import { SLIDES } from './slide/slides'
-import { IMAGES } from './image/images';
-import { Image } from './image/image';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { AuthService } from '../services/auth.service';
 import { LoginService } from '../services/login.service';
@@ -20,8 +18,7 @@ export class HomeComponent implements OnInit {
   catogery = "";
   Slides: Slide[]=SLIDES;
   slide: Slide = this.Slides[this.i];
-
-  Images: Image[]=IMAGES;
+  
   constructor(public authservice: AuthService,public loginservice: LoginService) { }
 
   ngOnInit() {

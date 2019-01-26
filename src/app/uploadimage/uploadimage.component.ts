@@ -18,7 +18,7 @@ export class UploadimageComponent implements OnInit {
 
   imageurl = "../../assets/icons/upload.gif";
 
-  filedata = {name:"",description:"",email:localStorage.getItem("Email"), pdf: ""};
+  filedata = {name:"",description:"",email:localStorage.getItem("Email"), pdf: "",upvotes:0};
 
   constructor(private imgCompressService: ImageCompressService, public uploadservice: UploadService) { }
 

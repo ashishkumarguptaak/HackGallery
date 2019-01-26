@@ -9,17 +9,13 @@ import { PDFItem } from '../services/PDF/pdf';
   styleUrls: ['./uploads.component.css']
 })
 export class UploadsComponent implements OnInit {
-  emaildata = {email:""};
-  pdfData ;
+  pdfData : PDFItem[];
 
   constructor(public uploadservice: UploadService,public pdfservice: PDFService) { }
 
   ngOnInit() {
-    var Email = localStorage.getItem("Email");
-    this.emaildata.email = Email;
-    this.uploadservice.getpdf(this.emaildata);
     this.pdfData = this.pdfservice.getPdfItems();
-    console.log("length"+this.pdfservice.getPdfItems().length);
+    console.log("length "+this.pdfservice.getPdfItems().length);
     for(let pdfItem of this.pdfData){
       console.log("For: "+pdfItem.name)
     }

@@ -17,6 +17,7 @@
           <input type="text" placeholder="Enter description" #Description="ngModel" name="Description" [(ngModel)]="filedata.description"><br>
   
           <button [disabled]="uploadForm.form.invalid" type="submit">Upload</button><br>
+          <button type="button" class="btn btn-danger cancelbtn" routerLink="/uploads">Cancel</button>
         </div>
     </form>
   </div>

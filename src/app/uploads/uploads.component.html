@@ -9,12 +9,17 @@
             <div  *ngIf="pdfservice.getPdfItems().length!==0">
               <div class="row">
                 <ul style="list-style-type: none;">
-                    <li *ngFor="let pdf of pdfservice.getPdfItems()" >
-                        <a routerLink="/description">
-                          <div class="col-md-4 image">
-                             <img src="{{../../../../assets/icons/pdf.gif" style="width:80%;height:200px;">
-                              <div class="name">{{pdf.name}}</div>
-                          </div>
+                    <li *ngFor="let pdf of pdfservice.getPdfItems(); let i= index" >
+                        <a [routerLink]="['/description',i,'user']">
+                            <div class="col-md-4">
+                                    <div class="card mb-4">
+                                       <img class="card-img-top"style="width:100px;height:100px;" src="../../assets/icons/images.png" alt="Card image cap">
+                                       <div class="card-body">
+                                          <h5 >{{pdf.name}}</h5>
+                                          <p >{{pdf.description}}</p>
+                                       </div>
+                                    </div>
+                                 </div>
                         </a>
                     </li>
                 </ul>

@@ -7,17 +7,6 @@
     <div>
       <ul class="nav navbar-nav navbar-right shiftright">
         <li><a routerLink="/home" routerLinkActive="active"><span class="glyphicon glyphicon-home"></span> HOME</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <span class="glyphicon glyphicon-chevron-down"></span> CATEGORY</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Fashion</a></li>
-            <li><a href="#">Nature</a></li>
-            <li><a href="#">Science</a></li>
-            <li><a href="#">Sports</a></li>
-            <li><a href="#">Travel</a></li>
-          </ul>
-        </li>
         <li><a routerLink="/contact" routerLinkActive="active"><span class="glyphicon glyphicon-envelope"></span> CONTACT</a></li>
         <li><a routerLink="/about" routerLinkActive="active"><span class="glyphicon glyphicon-exclamation-sign"></span> ABOUT</a></li>
         <li><a routerLink="/login" *ngIf="!authservice.authenticated()" routerLinkActive="active"><span class="glyphicon glyphicon-log-in"></span> LOGIN</a></li>

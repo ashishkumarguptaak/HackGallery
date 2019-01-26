@@ -9,7 +9,6 @@ export class PDFService {
   constructor (){}
 
     getPdfItems() {
-      console.log(PDF_ITEMS);
         return PDF_ITEMS;
     }
 

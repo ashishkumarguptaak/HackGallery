@@ -21,6 +21,10 @@ var uploadSchema = mongoose.Schema({
     pdf:{
         type: String,
         required: true
+    },
+    upvotes:{
+        type: Number,
+        default: 0
     }
 });
 

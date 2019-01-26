@@ -12,10 +12,13 @@ input {
     font-size: 16px;
   }
   
-  input, textarea {
-    color: #878787;
-    background-color: #f1f1f1;
-    font-size: 16px;
+  span {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
   }
   textarea{
     padding: 20px;
@@ -32,6 +35,11 @@ input {
   .imgcontainer {
     text-align: center;
     cursor: pointer;
+  }
+  .pdfcontainer {
+    text-align: center;
+    cursor: pointer;
+    height: 100xp;
   }
   img.avatar {
     width: 100%;
@@ -56,4 +64,6 @@ input {
   ul li a:hover {
     color: #ea399a;
   }
+
+
   

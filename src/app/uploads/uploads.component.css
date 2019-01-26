@@ -8,7 +8,6 @@
     border-radius: 50%;
   }
   .photoinfo {
-    color: #878787;
     font-size: 16px;
     margin-top: 15px;
   }
@@ -16,7 +15,6 @@
   ul li  {
     list-style-type: none;
     padding: 4px 0 4px 0;
-    border-bottom: 1.5px solid #f1f1f1;
   }
   ul li a {
     color: #878787;
@@ -41,10 +39,11 @@
     opacity: 0.8;
   }
   
-  .image:hover .overlay {
-    height: 25%;
-  }
   .name {
     font-size: 16px;
     color: darkgreen;
+    text-align: center;
+
   }
+
+  
