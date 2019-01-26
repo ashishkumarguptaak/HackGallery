@@ -3,7 +3,7 @@ var nodemailer = require('nodemailer');
 
 
 //Connect to Mongoose
-const conn = mongoose.connect('mongodb://bookgalleryuser:bookgallery1@ds213255.mlab.com:13255/bookgallery');
+const conn = mongoose.connect('mongodb://bookuser:bookuser1@ds213255.mlab.com:13255/bookgallery');
 
 //Register Schema
 var registerSchema = mongoose.Schema({

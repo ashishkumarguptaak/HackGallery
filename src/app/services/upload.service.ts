@@ -31,4 +31,14 @@ export class UploadService {
       }
     });
   }
+
+  uploadFile(filedata){
+    this._http.post('http://localhost:1818/uploadfile', filedata).subscribe(result =>{
+      if(result._body === "false"){
+        console.log("Upload Failed.");
+      }else{
+        console.log("Success.");
+      }
+    });
+  }
 }

@@ -3,7 +3,7 @@
     <form #uploadForm="ngForm" (ngSubmit)="uploadImage()" novalidate>
         <div class="imgcontainer">
           <img src="{{imageurl}}" alt="Avatar" class="avatar"> 
-          <input #Image style="margin-left: 40%" type="file"  (change)="onFileChanged($event)" accept="image/*">
+          <input #Image style="margin-left: 40%" type="file" name="pdfname" accept="application/pdf">
         </div>
       
         <div class="container">

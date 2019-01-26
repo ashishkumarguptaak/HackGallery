@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 //Connect to Mongoose
-const conn = mongoose.connect('mongodb://bookgalleryuser:bookgallery1@ds213255.mlab.com:13255/bookgallery');
+const conn = mongoose.connect('mongodb://bookuser:bookuser1@ds213255.mlab.com:13255/bookgallery');
 
 //Image Schema
 var uploadSchema = mongoose.Schema({
