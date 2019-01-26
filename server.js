@@ -7,20 +7,22 @@ const http = require('http');
 const app= express();
 
 const DIR = './uploads';
+
+var pathname = "";
  
 let storage = multer.diskStorage({
     destination: (req, file, cb) => {
       cb(null, DIR);
     },
     filename: (req, file, cb) => {
-      cb(null, file.fieldname + '-' + Date.now() + '.' + path.extname(file.originalname));
+        pathname = file.fieldname + '-' + Date.now() + '.' + path.extname(file.originalname)
+      cb(null, pathname); 
     }
 });
 let upload = multer({storage: storage});
 
 Email = require('./src/backend/contactemails');
 Register = require('./src/backend/register');
-Upload = require('./src/backend/imageupload');
 FileUpload = require('./src/backend/fileupload');
 
 
@@ -72,19 +74,6 @@ app.post('/update', function(req, res, next){
     Register.updateprofile(profiledata, res);
 });
 
-//Image upload
-app.post('/upload',(req,res,next)=>{
-    var data = req.body;
-    Upload.upload(data,res);
-});
-
-//Get images
-app.post('/getimages',(req,res,next)=>{
-    var Email = req.body;
-    Upload.getimages(Email,res);
-});
-
-
 //Upload pdf
 app.post('/uploadfile',upload.single('pdfname'), function (req, res) {
     if (!req.file) {
@@ -94,12 +83,27 @@ app.post('/uploadfile',upload.single('pdfname'), function (req, res) {
         });
     
       } else {
-        console.log('file received');
+        console.log('File received');
+        console.log(pathname);
         return res.send({
           success: true
         })
       }
 });
+
+//Upload pdf details
+app.post('/filedata',(req, res, next)=>{
+    data = req.body;
+    data.pdf = pathname;
+    FileUpload.fileupload(data, res);
+});
+
+
+//Get PDFs
+app.post('/getpdf', function(req, res ,next){
+    pdfdata = req.body;
+    FileUpload.getpdfs(pdfdata, res);
+})
 
 
 //Set port

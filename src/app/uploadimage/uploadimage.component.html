@@ -1,20 +1,20 @@
 
 <div class="full">
-    <form #uploadForm="ngForm" (ngSubmit)="uploadImage()" novalidate>
+    <form #uploadForm="ngForm" (ngSubmit)="uploadPDF(uploadForm)" novalidate>
         <div class="imgcontainer">
           <img src="{{imageurl}}" alt="Avatar" class="avatar"> 
-          <input #Image style="margin-left: 40%" type="file" name="pdfname" accept="application/pdf">
+          <input  style="margin-left: 40%" type="file" name="pdfname"  ng2FileSelect [uploader]="uploader" accept="application/pdf">
         </div>
       
         <div class="container">
           <label><b>Image</b></label><br>
-          <input type="text" placeholder="Image name" #Name="ngModel" name="Name" [(ngModel)]="imagedata.name" required><br>
+          <input type="text" placeholder="Image name" #Name="ngModel" name="Name" [(ngModel)]="filedata.name" required><br>
           <div *ngIf="Name.errors && (Name.dirty || Name.touched)" class="alert alert-danger">
               Name required!
           </div>
   
           <label><b>Description</b></label><br>
-          <input type="text" placeholder="Enter description" #Description="ngModel" name="Description" [(ngModel)]="imagedata.description"><br>
+          <input type="text" placeholder="Enter description" #Description="ngModel" name="Description" [(ngModel)]="filedata.description"><br>
   
           <button [disabled]="uploadForm.form.invalid" type="submit">Upload</button><br>
         </div>

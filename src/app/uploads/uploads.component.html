@@ -3,10 +3,10 @@
     <div class="row">
       <div class="col-lg-9">
           <label style="font-size: 24px;margin: 5px 0 30px 0;">Your Uploads</label><br>
-          <div class="imgcontainer" *ngIf="imageservice.getImageItems().length === 0">
+          <div class="imgcontainer" >
               <img src="../../assets/icons/emptystate.gif" alt="Avatar" class="avatar"> 
             </div>
-            <div *ngIf="imageservice.getImageItems().length !== 0">
+            <div >
               <div class="row">
                 <ul style="list-style-type: none;">
                     <li *ngFor="let images of Images" >

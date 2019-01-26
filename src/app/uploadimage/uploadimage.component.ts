@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ImageCompressService } from  'ng2-image-compress';
-import {  FileUploader } from 'ng2-file-upload/ng2-file-upload';
+import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
 import { UploadService } from '../services/upload.service';
+import { NgForm } from '@angular/forms';
 
 const URL = 'http://localhost:1818/uploadfile';
 
@@ -17,7 +18,7 @@ export class UploadimageComponent implements OnInit {
 
   imageurl = "../../assets/icons/upload.gif";
 
-  imagedata = {name:"",description:"",email:localStorage.getItem("Email"),image:Object};
+  filedata = {name:"",description:"",email:localStorage.getItem("Email"), pdf: ""};
 
   constructor(private imgCompressService: ImageCompressService, public uploadservice: UploadService) { }
 
@@ -27,14 +28,17 @@ export class UploadimageComponent implements OnInit {
     console.log("Configouring uploader.");
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-         console.log('ImageUpload:uploaded:', item, status, response);
+         console.log('FileUpload:uploaded:', item, status, response);
+         this.uploadservice.uploadFile(this.filedata);
          alert('File uploaded successfully');
      };
  }
 
-  uploadImage(){
+  uploadPDF(uploadForm: NgForm){
     console.log("Uploading PDF.")
     this.uploader.uploadAll();
+    uploadForm.resetForm();
+
   }
 
 }

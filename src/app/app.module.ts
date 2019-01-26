@@ -26,10 +26,12 @@ import { UploadimageComponent } from './uploadimage/uploadimage.component';
 import { UploadService } from './services/upload.service';
 
 import { ImageCompressService,ResizeOptions } from 'ng2-image-compress';
+import { FileSelectDirective } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
     AppComponent,
+    FileSelectDirective,
     NavbarComponent,
     HomeComponent,
     FooterComponent,

@@ -18,8 +18,8 @@ var uploadSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    image:{
-        type: Object,
+    pdf:{
+        type: String,
         required: true
     }
 });
@@ -27,7 +27,6 @@ var uploadSchema = mongoose.Schema({
 var FileUpload = module.exports = mongoose.model('FileUploads', uploadSchema);
 
 module.exports.fileupload = function(filedata, res){
-    console.log(filedata);
     FileUpload.create(filedata,(err,user)=>
     {
         if(err){
@@ -37,4 +36,17 @@ module.exports.fileupload = function(filedata, res){
         console.log("File Uploaded successfully.");
         res.send(true);
     });
+}
+
+module.exports.getpdfs = function(data, res){
+    Email = data.email;
+    FileUpload.find({email:Email})
+    .then((doc)=>{
+        if(doc.length === 0){
+            res.send("false");
+        }else{
+            console.log(doc);
+            res.send(doc);
+        }
+    })
 }

@@ -1,43 +1,39 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
-import { ImageService } from './image.service';
+import { PDFService } from './pdf.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UploadService {
 
-  constructor(@Inject(Http) public _http, public router: Router,@Inject(ImageService) public imageservice) { }
+  constructor(@Inject(Http) public _http, public router: Router,@Inject(PDFService) public pdfservice) { }
 
-  uploadimage(imagedata){
-    this._http.post('http://localhost:1818/upload', imagedata).subscribe(result =>{
-      if(result._body === "true"){
-        console.log("Uploaded successfully.");
-        this.router.navigate(['uploads'])
-      }else{
-        console.log(result._body);
-      }
-    });
-  }
-
-  getimages(email){
-    this._http.post('http://localhost:1818/getimages', email).subscribe(result=>{
+  getpdf(email){
+    this._http.post('http://localhost:1818/getpdf', email).subscribe(result=>{
       if (result._body === "false"){
-        console.log("No images.");
+        console.log("No pdfs.");
       }else {
-        console.log("Images");
-        this.imageservice.addImageItems(result._body);
+        console.log("Fetched PDFs.");
+        console.log(result._body);
+        this.pdfservice.addPdfItems(result._body);
+        var l = (this.pdfservice.getPdfItems()).length;
+        console.log(JSON.parse(this.pdfservice.getPdfItems()));
+        // for(let i=0;i<l;i++){
+        //   console.log(this.pdfservice.getPdfItems()[i]);
+        // }
       }
     });
   }
 
   uploadFile(filedata){
-    this._http.post('http://localhost:1818/uploadfile', filedata).subscribe(result =>{
+    this._http.post('http://localhost:1818/filedata', filedata).subscribe(result =>{
       if(result._body === "false"){
-        console.log("Upload Failed.");
+        console.log("Data Upload Failed.");
       }else{
-        console.log("Success.");
+        console.log("Data upload success.");
+        this.router.navigate(['uploads']);
       }
     });
   }
