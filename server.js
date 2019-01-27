@@ -105,6 +105,11 @@ app.post('/getpdf', function(req, res ,next){
     FileUpload.getpdfs(pdfdata, res);
 })
 
+//Universal PDFs
+app.post('/universalpdf', function(req, res, next){
+    FileUpload.universalpdf(res);
+})
+
 
 //Set port
 const port = process.env.PORT || '1818';

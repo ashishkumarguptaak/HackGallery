@@ -1,3 +1,3 @@
 import { HomePDFItem } from "./homepdf";
 
-export const PDF_ITEMS: HomePDFItem[] = [];
+export const HOME_PDF_ITEMS: HomePDFItem[] = [];

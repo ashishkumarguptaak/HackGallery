@@ -18,11 +18,11 @@
   <div class="container marginclass">
         <div class="row">
             <ul style="list-style-type: none;">
-                <li *ngFor="let images of Images" >
-                    <a routerLink="/description">
+                <li *ngFor="let pdf of universalpdfservice.getPdfItems();let i = index" >
+                    <a [routerLink]="['/description',i,'home']">
                       <div class="col-md-4">
-                          <img src="{{images.image}}" style="width:150px;height:150px;">
-                          <p class="name">{{images.name}}</p>
+                          <img src="../../assets/icons/images.png" style="width:150px;height:150px;">
+                          <p class="name">{{pdf.name}}</p>
                       </div>
                     </a>
                 </li>
@@ -30,9 +30,9 @@
             </div>
     </div>
 
-  <div class="center-blockcol-md-12 col-md-offset-5">
+  <!-- <div class="center-blockcol-md-12 col-md-offset-5">
       <button class="btn btn-large showmore"><span class="glyphicon glyphicon-refresh"></span>SHOW MORE</button>
-  </div>
+  </div> -->
   <br><br>
   
 <app-footer></app-footer>

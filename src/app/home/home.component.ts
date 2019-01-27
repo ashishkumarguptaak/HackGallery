@@ -5,6 +5,7 @@ import { SLIDES } from './slide/slides'
 import { NavbarComponent } from '../navbar/navbar.component';
 import { AuthService } from '../services/auth.service';
 import { LoginService } from '../services/login.service';
+import { UniversalPDFService } from '../services/universalpdf.service';
 
 @Component({
   selector: 'app-home',
@@ -19,12 +20,14 @@ export class HomeComponent implements OnInit {
   Slides: Slide[]=SLIDES;
   slide: Slide = this.Slides[this.i];
   
-  constructor(public authservice: AuthService,public loginservice: LoginService) { }
+  constructor(public authservice: AuthService,public loginservice: LoginService,public universalpdfservice: UniversalPDFService) { }
 
   ngOnInit() {
     var navbar = new NavbarComponent(this.authservice,this.loginservice);
     navbar.ngOnInit();
   }
+
+
 
   public plusSlides(value: number){
     

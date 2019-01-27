@@ -56,3 +56,15 @@ module.exports.getpdfs = function(data, res){
         }
     })
 }
+
+module.exports.universalpdf = function(res){
+    FileUpload.find()
+    .then((doc)=>{
+        if(doc.length === 0){
+            res.send("false");
+        }else{
+            console.log(doc);
+            res.send(doc);
+        }
+    })
+}

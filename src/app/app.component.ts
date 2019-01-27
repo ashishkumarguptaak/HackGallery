@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UploadService } from './services/upload.service';
+import { UniversalService } from './services/universal.service';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,9 @@ import { UploadService } from './services/upload.service';
 })
 export class AppComponent implements OnInit{
   emaildata = {email:""};
-  title = 'HackGallery';
+  title = 'BookGallery';
 
-  constructor(public uploadservice: UploadService) { }
+  constructor(public uploadservice: UploadService, public universalservice: UniversalService) { }
 
 
   ngOnInit(){
@@ -18,5 +19,7 @@ export class AppComponent implements OnInit{
     var Email = localStorage.getItem("Email");
     this.emaildata.email = Email;
     this.uploadservice.getpdf(this.emaildata);
+
+    this.universalservice.universalpdf();
   }
 }

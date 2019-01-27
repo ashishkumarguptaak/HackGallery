@@ -5,6 +5,7 @@ import { saveAs } from 'file-saver';
 import { ActivatedRoute, Params } from '@angular/router';
 import { PDFService } from '../services/pdf.service';
 import { PDFItem } from '../services/PDF/pdf';
+import { UniversalPDFService } from '../services/universalpdf.service';
 
 @Component({
   selector: 'app-description',
@@ -17,9 +18,9 @@ export class DescriptionComponent implements OnInit {
   description = "";
   email = "example@example.com";
 
-  data: PDFItem;
+  data;
 
-  constructor(@Inject(Http) public http,private route: ActivatedRoute,private pdfservice: PDFService) { }
+  constructor(@Inject(Http) public http,private route: ActivatedRoute,private pdfservice: PDFService,private universalpdfservice: UniversalPDFService) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params)=>{
@@ -27,7 +28,11 @@ export class DescriptionComponent implements OnInit {
       const type = params['type'];
       
       if(type === "home"){
-
+        this.data = this.universalpdfservice.getPdfItems()[index];
+        this.pdfSrc =  "http://localhost:4200/uploads/" + JSON.parse(JSON.stringify(this.data)).pdf;
+        this.name = JSON.parse(JSON.stringify(this.data)).name;
+        this.description = JSON.parse(JSON.stringify(this.data)).description;
+        this.email = JSON.parse(JSON.stringify(this.data)).email;
       }else if(type === "user"){
         this.data = this.pdfservice.getPdfItems()[index];
         this.pdfSrc = "http://localhost:4200/uploads/" + JSON.parse(JSON.stringify(this.data)).pdf;

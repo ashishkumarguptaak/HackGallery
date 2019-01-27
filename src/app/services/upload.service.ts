@@ -28,7 +28,7 @@ export class UploadService {
         console.log("Data Upload Failed.");
       }else{
         console.log("Data upload success.");
-        this.router.navigate(['uploads']);
+        this.router.navigate(['/uploads']);
       }
     });
   }
