@@ -46,7 +46,7 @@ import { PDFService } from './services/pdf.service';
     VerifyComponent,
     UploadsComponent,
     UploadimageComponent
-  ],
+    ],
   imports: [
     PdfViewerModule,
     BrowserModule,

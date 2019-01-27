@@ -21,4 +21,8 @@ export class LoginComponent implements OnInit {
     loginForm.resetForm();
   }
 
+  forgotPassword(){
+    console.log("Forgot password.");
+  }
+
 }

@@ -110,7 +110,17 @@ app.post('/universalpdf', function(req, res, next){
     FileUpload.universalpdf(res);
 })
 
+//Universal Search
+app.post('/universalsearch', function(req, res, next){
+    var data = req.body;
+    FileUpload.universalsearch(data,res);
+})
 
+//Forgot Password
+app.post('/forgotpassword', function(req, res, next){
+    var data = req.body;
+    res.send("Sorry");
+})
 //Set port
 const port = process.env.PORT || '1818';
 app.set('port', port);

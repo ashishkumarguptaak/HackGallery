@@ -22,4 +22,16 @@ export class UniversalService {
       }
     });
   }
+
+  universalSearch(searchdata){
+    this._http.post('http://localhost:1818/universalsearch',searchdata).subscribe(result=>{
+    if(result._body === "false"){
+      console.log("Book not found.")
+    }else{
+      console.log("Searched PDFs.");
+      var data = JSON.parse((result._body));
+      this.universalpdfservice.addPdfItems(data);
+    }
+    });
+  }
 }

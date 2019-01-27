@@ -68,3 +68,17 @@ module.exports.universalpdf = function(res){
         }
     })
 }
+
+module.exports.universalsearch = function(data, res){
+    var Data = data.Name;
+    console.log(Data);
+FileUpload.find({name: Data})
+    .then((doc)=>{
+        if(doc.length === 0){
+            res.send("false");
+        }else{
+            console.log(doc);
+            res.send(doc);
+        }
+    })
+}

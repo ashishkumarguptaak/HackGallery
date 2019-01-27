@@ -6,8 +6,8 @@
       <div class="textname"><p>{{slide.name}}</p></div>
       <img src="{{slide.image}}" style="width:100%;height:40em;">
       <div class="search">
-        <input type="text" [(ngModel)]="catogery" class="responsive" placeholder="Search...">
-        <button type="submit" class="colorpink"><span class="glyphicon glyphicon-search"></span></button>
+        <input type="text" [(ngModel)]="bookname" class="responsive" placeholder="Search...">
+        <button (click)="searchBook()" type="submit" class="colorpink"><span class="glyphicon glyphicon-search"></span></button>
       </div>
     </div>  
     <a class="prev" (click)="plusSlides(-1)">&#10094;</a>

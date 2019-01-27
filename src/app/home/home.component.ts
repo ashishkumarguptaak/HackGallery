@@ -6,6 +6,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { AuthService } from '../services/auth.service';
 import { LoginService } from '../services/login.service';
 import { UniversalPDFService } from '../services/universalpdf.service';
+import { UniversalService } from '../services/universal.service';
 
 @Component({
   selector: 'app-home',
@@ -16,11 +17,11 @@ export class HomeComponent implements OnInit {
 
   i=0;
   
-  catogery = "";
+  bookname = "";
   Slides: Slide[]=SLIDES;
   slide: Slide = this.Slides[this.i];
   
-  constructor(public authservice: AuthService,public loginservice: LoginService,public universalpdfservice: UniversalPDFService) { }
+  constructor(public authservice: AuthService,public loginservice: LoginService,public universalpdfservice: UniversalPDFService,public universalservice: UniversalService) { }
 
   ngOnInit() {
     var navbar = new NavbarComponent(this.authservice,this.loginservice);
@@ -40,5 +41,12 @@ export class HomeComponent implements OnInit {
       this.slide = this.Slides[this.i];
 
       console.log(this.i);
+  }
+
+  searchBook(){
+    console.log("Searching..")
+    var data = {Name:this.bookname};
+    this.universalservice.universalSearch(data);
+    this.bookname = "";
   }
 }
