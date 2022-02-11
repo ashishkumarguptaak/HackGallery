@@ -28,7 +28,7 @@
     "crypto-js": "^3.1.9-1",
     "dotenv": "^8.2.0",
     "ejs": "^2.6.1",
-    "express-handlebars": "^3.0.0",
+    "express-handlebars": "^5.3.1",
     "file-saver": "^2.0.0",
     "file-server": "^2.0.1",
     "formidable": "^1.2.1",
